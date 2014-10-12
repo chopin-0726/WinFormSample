@@ -17,6 +17,15 @@
         Category2 = _c2
     End Sub
 
+    Public Function Clone() As Product
+        Dim obj As Product = New Product()
+        obj.Id = Me.Id
+        obj.Name = Me.Name
+        obj.Category1 = Me.Category1
+        obj.Category2 = Me.Category2
+        Return obj
+    End Function
+
     Public Overrides Function Equals(ByVal obj As Object) As Boolean
         'objがNothingか、型が違うときは、等価でない
         If (obj Is Nothing) OrElse (Not Me.GetType() Is obj.GetType()) Then
@@ -24,7 +33,7 @@
         End If
 
         'ひかく
-        Dim target As ProductWithColor = CType(obj, ProductWithColor)
+        Dim target As Product = CType(obj, Product)
         Return Me.Category1 = target.Category1 _
             And Me.Category2 = target.Category2 _
             And Me.Id = target.Id _

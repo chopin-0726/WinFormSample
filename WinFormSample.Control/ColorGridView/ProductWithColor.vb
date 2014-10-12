@@ -28,6 +28,7 @@ Public Class ProductWithColor
         Status = EditStatus.None
     End Sub
 
+    'TODO: Clone（Product参照）
     Public Sub New(ByVal source As ProductWithColor)
         MyBase.New(source)
         Id = source.Id

@@ -28,12 +28,12 @@ Partial Class CtlColorGridView
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.AddButton = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.BindingSourceProduct = New System.Windows.Forms.BindingSource(Me.components)
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BindingSourceProduct = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSourceProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -90,6 +90,10 @@ Partial Class CtlColorGridView
         Me.DataGridView1.Size = New System.Drawing.Size(505, 224)
         Me.DataGridView1.TabIndex = 10
         '
+        'BindingSourceProduct
+        '
+        Me.BindingSourceProduct.DataSource = GetType(WinFormSample.Control.ProductWithColor)
+        '
         'IdDataGridViewTextBoxColumn
         '
         Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
@@ -119,10 +123,7 @@ Partial Class CtlColorGridView
         Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
         Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
         Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
-        '
-        'BindingSourceProduct
-        '
-        Me.BindingSourceProduct.DataSource = GetType(WinFormSample.Control.ProductWithColor)
+        Me.StatusDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CtlColorGridView
         '
