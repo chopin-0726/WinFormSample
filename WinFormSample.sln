@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ColorGridView", "ColorGridView\ColorGridView.vbproj", "{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SelectAndSelectedList", "SelectAndSelectedList\SelectAndSelectedList.vbproj", "{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinFormSample", "WinFormSampleBase\WinFormSample.vbproj", "{05849E89-9B42-435D-9624-760C74760724}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinFormSample.Control", "WinFormSample.Control\WinFormSample.Control.vbproj", "{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05849E89-9B42-435D-9624-760C74760724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05849E89-9B42-435D-9624-760C74760724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05849E89-9B42-435D-9624-760C74760724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05849E89-9B42-435D-9624-760C74760724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,4 +72,24 @@
     '    End If
     'End Sub
 
+    Public Sub New()
+        InitializeComponent()
+
+    End Sub
+
+    Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
+
+    End Sub
+
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+
+    End Sub
+
+    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
+
+    End Sub
+
+    Private Sub CheckButton_Click(sender As Object, e As EventArgs) Handles CheckButton.Click
+
+    End Sub
 End Class

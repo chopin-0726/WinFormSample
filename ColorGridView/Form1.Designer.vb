@@ -27,8 +27,8 @@ Partial Class Form1
         Me.UserBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AddButton = New System.Windows.Forms.Button()
         Me.DeleteButton = New System.Windows.Forms.Button()
-        Me.Button = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.CancelButton = New System.Windows.Forms.Button()
+        Me.CheckButton = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UserBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -60,31 +60,31 @@ Partial Class Form1
         Me.DeleteButton.Text = "delete"
         Me.DeleteButton.UseVisualStyleBackColor = True
         '
-        'Button
+        'CancelButton
         '
-        Me.Button.Location = New System.Drawing.Point(265, 222)
-        Me.Button.Name = "Button"
-        Me.Button.Size = New System.Drawing.Size(75, 23)
-        Me.Button.TabIndex = 3
-        Me.Button.Text = "cancel"
-        Me.Button.UseVisualStyleBackColor = True
+        Me.CancelButton.Location = New System.Drawing.Point(265, 222)
+        Me.CancelButton.Name = "CancelButton"
+        Me.CancelButton.Size = New System.Drawing.Size(75, 23)
+        Me.CancelButton.TabIndex = 3
+        Me.CancelButton.Text = "cancel"
+        Me.CancelButton.UseVisualStyleBackColor = True
         '
-        'Button4
+        'CheckButton
         '
-        Me.Button4.Location = New System.Drawing.Point(72, 252)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "check"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.CheckButton.Location = New System.Drawing.Point(72, 252)
+        Me.CheckButton.Name = "CheckButton"
+        Me.CheckButton.Size = New System.Drawing.Size(75, 23)
+        Me.CheckButton.TabIndex = 4
+        Me.CheckButton.Text = "check"
+        Me.CheckButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(651, 387)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button)
+        Me.Controls.Add(Me.CheckButton)
+        Me.Controls.Add(Me.CancelButton)
         Me.Controls.Add(Me.DeleteButton)
         Me.Controls.Add(Me.AddButton)
         Me.Controls.Add(Me.DataGridView1)
@@ -99,7 +99,7 @@ Partial Class Form1
     Friend WithEvents UserBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents AddButton As System.Windows.Forms.Button
     Friend WithEvents DeleteButton As System.Windows.Forms.Button
-    Friend WithEvents Button As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents CancelButton As System.Windows.Forms.Button
+    Friend WithEvents CheckButton As System.Windows.Forms.Button
 
 End Class

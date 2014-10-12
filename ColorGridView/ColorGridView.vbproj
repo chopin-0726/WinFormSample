@@ -5,12 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <StartupObject>ColorGridView.My.MyApplication</StartupObject>
+    <OutputType>Library</OutputType>
+    <StartupObject>
+    </StartupObject>
     <RootNamespace>ColorGridView</RootNamespace>
     <AssemblyName>ColorGridView</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>Windows</MyType>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
