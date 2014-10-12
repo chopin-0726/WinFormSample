@@ -7,17 +7,9 @@ Public Class FrmBase
     Private SelectedCtl As String
     Private _currentCtl As Windows.Forms.Control
 
-
-    Public Sub New()
-
-        ' この呼び出しはデザイナーで必要です。
-        InitializeComponent()
-
-        ' InitializeComponent() 呼び出しの後で初期化を追加します。
-
-    End Sub
-
     Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO:コントロールの切り替え
+
         '_currentCtl = New CtlDefault
         _currentCtl = New CtlColorGridView
         MainPanel.Controls.Add(_currentCtl)
