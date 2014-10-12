@@ -24,7 +24,7 @@ Partial Class CtlColorGridView
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.CheckButton = New System.Windows.Forms.Button()
-        Me.CancelButton = New System.Windows.Forms.Button()
+        Me.ResetButton = New System.Windows.Forms.Button()
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.AddButton = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -47,14 +47,14 @@ Partial Class CtlColorGridView
         Me.CheckButton.Text = "check"
         Me.CheckButton.UseVisualStyleBackColor = True
         '
-        'CancelButton
+        'ResetButton
         '
-        Me.CancelButton.Location = New System.Drawing.Point(213, 230)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(75, 23)
-        Me.CancelButton.TabIndex = 13
-        Me.CancelButton.Text = "cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.ResetButton.Location = New System.Drawing.Point(213, 230)
+        Me.ResetButton.Name = "ResetButton"
+        Me.ResetButton.Size = New System.Drawing.Size(75, 23)
+        Me.ResetButton.TabIndex = 13
+        Me.ResetButton.Text = "reset"
+        Me.ResetButton.UseVisualStyleBackColor = True
         '
         'DeleteButton
         '
@@ -129,7 +129,7 @@ Partial Class CtlColorGridView
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.CheckButton)
-        Me.Controls.Add(Me.CancelButton)
+        Me.Controls.Add(Me.ResetButton)
         Me.Controls.Add(Me.DeleteButton)
         Me.Controls.Add(Me.AddButton)
         Me.Controls.Add(Me.DataGridView1)
@@ -141,7 +141,7 @@ Partial Class CtlColorGridView
 
     End Sub
     Friend WithEvents CheckButton As System.Windows.Forms.Button
-    Friend WithEvents CancelButton As System.Windows.Forms.Button
+    Friend WithEvents ResetButton As System.Windows.Forms.Button
     Friend WithEvents DeleteButton As System.Windows.Forms.Button
     Friend WithEvents AddButton As System.Windows.Forms.Button
     Friend WithEvents BindingSourceProduct As System.Windows.Forms.BindingSource

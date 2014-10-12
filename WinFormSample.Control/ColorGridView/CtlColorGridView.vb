@@ -14,17 +14,17 @@ Public Class CtlColorGridView
 
     Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
         _viewModel.Add()
-        BindingSourceProduct.DataSource = _viewModel.Editing
+        'BindingSourceProduct.DataSource = _viewModel.Editing
         'BindingSourceProduct.ResetBindings(False)
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         _viewModel.Delete(BindingSourceProduct.Position)
-        BindingSourceProduct.DataSource = _viewModel.Editing
-        BindingSourceProduct.ResetBindings(False)
+        'BindingSourceProduct.DataSource = _viewModel.Editing
+        'BindingSourceProduct.ResetBindings(False)
     End Sub
 
-    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
+    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles ResetButton.Click
         _viewModel.Reset()
         BindingSourceProduct.DataSource = _viewModel.Editing
     End Sub

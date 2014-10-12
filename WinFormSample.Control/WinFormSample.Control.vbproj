@@ -100,6 +100,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ColorGridView\ProductListForBind.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ColorGridView\CtlColorGridView.resx">
