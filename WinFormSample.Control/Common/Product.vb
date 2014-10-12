@@ -17,6 +17,21 @@
         Category2 = _c2
     End Sub
 
+    Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        'objがNothingか、型が違うときは、等価でない
+        If (obj Is Nothing) OrElse (Not Me.GetType() Is obj.GetType()) Then
+            Return False
+        End If
+
+        'ひかく
+        Dim target As ProductWithColor = CType(obj, ProductWithColor)
+        Return Me.Category1 = target.Category1 _
+            And Me.Category2 = target.Category2 _
+            And Me.Id = target.Id _
+            And Me.Name.Equals(target.Name)
+
+    End Function
+
     ''' <summary>
     ''' 商品リスト（普通はDBとかから取ってくるやつ）
     ''' </summary>

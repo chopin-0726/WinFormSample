@@ -3,16 +3,16 @@ Imports WinFormSample.Control.ColorStatus
 Imports System.ComponentModel
 
 ''' <summary>
-''' 色変更用Product（継承以外Productと同じ）
+''' Product セル色変更対応版（ColorStatusの継承以外はProductと同じ）
 ''' </summary>
 ''' <remarks></remarks>
 Public Class ProductWithColor
+    Inherits ColorStatus
+
     Property Id As Integer
     Property Name As String
     Property Category1 As Category1Enum
     Property Category2 As Category2Enum
-
-    Property Status As EditStatus = EditStatus.None
 
     Public Sub New()
         Category1 = Category1Enum.Other
@@ -28,6 +28,13 @@ Public Class ProductWithColor
         Status = EditStatus.None
     End Sub
 
+    Public Sub New(ByVal source As ProductWithColor)
+        MyBase.New(source)
+        Id = source.Id
+        Name = source.Name
+        Category1 = source.Category1
+        Category2 = source.Category2
+    End Sub
 
     Public Overrides Function Equals(ByVal obj As Object) As Boolean
         'objがNothingか、型が違うときは、等価でない
