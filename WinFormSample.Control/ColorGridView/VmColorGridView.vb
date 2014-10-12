@@ -20,7 +20,7 @@ Public Class VmColorGridView
 
     Private Sub InitilalizeEditingList()
         'TODO: リストのディープコピーってこれでいいの？
-        _editing = New BindingList(Of ProductWithColor)(_original.Select(Function(t) New ProductWithColor(t)).ToList())
+        _editing = New BindingList(Of ProductWithColor)(_original.Select(Function(t) t.Clone()).ToList())
 
     End Sub
 

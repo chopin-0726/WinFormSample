@@ -74,6 +74,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainedComboBox\CtlChainedComboBox.designer.vb">
+      <DependentUpon>CtlChainedComboBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChainedComboBox\CtlChainedComboBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChainedComboBox\VMChainedComboBox.vb" />
     <Compile Include="ColorGridView\ColorStatus.vb" />
     <Compile Include="ColorGridView\CtlColorGridView.Designer.vb">
       <DependentUpon>CtlColorGridView.vb</DependentUpon>
@@ -108,6 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChainedComboBox\CtlChainedComboBox.resx">
+      <DependentUpon>CtlChainedComboBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColorGridView\CtlColorGridView.resx">
       <DependentUpon>CtlColorGridView.vb</DependentUpon>
     </EmbeddedResource>
@@ -126,8 +136,10 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Product.Category1.datasource" />
     <None Include="My Project\DataSources\Product.datasource" />
     <None Include="My Project\DataSources\ProductWithColor.datasource" />
+    <None Include="My Project\DataSources\VMChainedComboBox.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

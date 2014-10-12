@@ -1,52 +1,37 @@
 ﻿Imports WinFormSample.Control.Product
-Imports WinFormSample.Control.ColorStatus
-Imports System.ComponentModel
 
-''' <summary>
-''' Product セル色変更対応版（ColorStatusの継承以外はProductと同じ）
-''' </summary>
-''' <remarks></remarks>
 Public Class ProductWithColor
     Inherits ColorStatus
 
     Property Id As Integer
     Property Name As String
-    Property Category1 As Category1Enum
-    Property Category2 As Category2Enum
+    Property Category1 As Category
+    Property Category2 As Category
 
     Public Sub New()
-        Category1 = Category1Enum.Other
-        Category2 = Category2Enum.Other
-        Status = EditStatus.Created
+        Category1 = GetCategory(9)
+        Category2 = GetCategory(99)
     End Sub
 
-    Public Sub New(_id As Integer, _name As String, _c1 As Category1Enum, _c2 As Category2Enum)
+    Public Sub New(_id As Integer, _name As String, _c1 As Category, _c2 As Category)
         Id = _id
         Name = _name
         Category1 = _c1
         Category2 = _c2
-        Status = EditStatus.None
     End Sub
 
-    'TODO: Clone（Product参照）
-    Public Sub New(ByVal source As ProductWithColor)
-        MyBase.New(source)
-        Id = source.Id
-        Name = source.Name
-        Category1 = source.Category1
-        Category2 = source.Category2
-    End Sub
+    Public Function Clone() As ProductWithColor
+        Return New ProductWithColor(Me.Id, Me.Name, Me.Category1, Me.Category2)
+    End Function
 
     Public Overrides Function Equals(ByVal obj As Object) As Boolean
         'objがNothingか、型が違うときは、等価でない
-        If (obj Is Nothing) OrElse (Not Me.GetType() Is obj.GetType()) Then
-            Return False
-        End If
+        If (obj Is Nothing) OrElse (Not Me.GetType() Is obj.GetType()) Then Return False
 
         'ひかく
         Dim target As ProductWithColor = CType(obj, ProductWithColor)
-        Return Me.Category1 = target.Category1 _
-            And Me.Category2 = target.Category2 _
+        Return Me.Category1.Equals(target.Category1) _
+            And Me.Category2.Equals(target.Category2) _
             And Me.Id = target.Id _
             And Me.Name.Equals(target.Name)
 
@@ -59,16 +44,15 @@ Public Class ProductWithColor
     ''' <remarks></remarks>
     Public Shared Function CreateProductList() As IList(Of ProductWithColor)
         Return New List(Of ProductWithColor)({ _
-            New ProductWithColor(111, "comic 1", Category1Enum.Book, Category2Enum.Comic),
-            New ProductWithColor(112, "comic 2", Category1Enum.Book, Category2Enum.Comic),
-            New ProductWithColor(121, "novel 1", Category1Enum.Book, Category2Enum.Novel),
-            New ProductWithColor(122, "novel 2", Category1Enum.Book, Category2Enum.Novel),
-            New ProductWithColor(211, "note 1", Category1Enum.Stationary, Category2Enum.Note),
-            New ProductWithColor(212, "note 2", Category1Enum.Stationary, Category2Enum.Note),
-            New ProductWithColor(221, "pen 1", Category1Enum.Stationary, Category2Enum.Pen),
-            New ProductWithColor(222, "pen 2", Category1Enum.Stationary, Category2Enum.Pen)
+            New ProductWithColor(111, "comic 1", GetCategory(1), GetCategory(11)),
+            New ProductWithColor(112, "comic 2", GetCategory(1), GetCategory(11)),
+            New ProductWithColor(121, "novel 1", GetCategory(1), GetCategory(12)),
+            New ProductWithColor(122, "novel 2", GetCategory(1), GetCategory(12)),
+            New ProductWithColor(211, "note 1", GetCategory(2), GetCategory(21)),
+            New ProductWithColor(212, "note 2", GetCategory(2), GetCategory(21)),
+            New ProductWithColor(221, "pen 1", GetCategory(2), GetCategory(22)),
+            New ProductWithColor(222, "pen 2", GetCategory(2), GetCategory(22))
         })
     End Function
+
 End Class
-
-
