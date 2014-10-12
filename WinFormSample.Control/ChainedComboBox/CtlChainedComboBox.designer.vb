@@ -27,21 +27,21 @@ Partial Class CtlChainedComboBox
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SearchResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.ViewModelBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Category2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Categroy1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SearchResultBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SearchResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ViewModelBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Category2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Categroy1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SearchResultBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -86,6 +86,38 @@ Partial Class CtlChainedComboBox
         Me.DataGridView1.Size = New System.Drawing.Size(466, 211)
         Me.DataGridView1.TabIndex = 8
         '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Category1DataGridViewTextBoxColumn
+        '
+        Me.Category1DataGridViewTextBoxColumn.DataPropertyName = "Category1"
+        Me.Category1DataGridViewTextBoxColumn.HeaderText = "Category1"
+        Me.Category1DataGridViewTextBoxColumn.Name = "Category1DataGridViewTextBoxColumn"
+        Me.Category1DataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Category2DataGridViewTextBoxColumn
+        '
+        Me.Category2DataGridViewTextBoxColumn.DataPropertyName = "Category2"
+        Me.Category2DataGridViewTextBoxColumn.HeaderText = "Category2"
+        Me.Category2DataGridViewTextBoxColumn.Name = "Category2DataGridViewTextBoxColumn"
+        Me.Category2DataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SearchResultBindingSource
+        '
+        Me.SearchResultBindingSource.DataSource = GetType(WinFormSample.Control.Product)
+        '
         'ComboBox2
         '
         Me.ComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ViewModelBindingSource, "Category2Selected", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
@@ -124,38 +156,6 @@ Partial Class CtlChainedComboBox
         '
         Me.Categroy1BindingSource.DataSource = GetType(WinFormSample.Control.Product.Category)
         '
-        'SearchResultBindingSource
-        '
-        Me.SearchResultBindingSource.DataSource = GetType(WinFormSample.Control.Product)
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "Id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Id"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "Name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Name"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Category1DataGridViewTextBoxColumn
-        '
-        Me.Category1DataGridViewTextBoxColumn.DataPropertyName = "Category1"
-        Me.Category1DataGridViewTextBoxColumn.HeaderText = "Category1"
-        Me.Category1DataGridViewTextBoxColumn.Name = "Category1DataGridViewTextBoxColumn"
-        Me.Category1DataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Category2DataGridViewTextBoxColumn
-        '
-        Me.Category2DataGridViewTextBoxColumn.DataPropertyName = "Category2"
-        Me.Category2DataGridViewTextBoxColumn.HeaderText = "Category2"
-        Me.Category2DataGridViewTextBoxColumn.Name = "Category2DataGridViewTextBoxColumn"
-        Me.Category2DataGridViewTextBoxColumn.ReadOnly = True
-        '
         'CtlChainedComboBox
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -169,10 +169,10 @@ Partial Class CtlChainedComboBox
         Me.Name = "CtlChainedComboBox"
         Me.Size = New System.Drawing.Size(626, 415)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SearchResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ViewModelBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Category2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Categroy1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SearchResultBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

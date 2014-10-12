@@ -16,10 +16,15 @@ Public Class VMChainedComboBox
         End Get
     End Property
 
+    Private _rawProductList As IList(Of Product)
     Private _productList As BindingList(Of Product)
     Public ReadOnly Property ProductList As BindingList(Of Product)
         Get
-            Return New BindingList(Of Product)(_productList.Where(Function(t) t.Category2.Id = Category2Selected).ToList())
+            If IsCategory2Changed() Then
+                _productList = New BindingList(Of Product)(_rawProductList.Where(Function(t) t.Category2.Id = Category2Selected).ToList())
+                Category2PrevValue = Category2Selected
+            End If
+            Return _productList
         End Get
     End Property
 
@@ -27,6 +32,7 @@ Public Class VMChainedComboBox
     'TODO: WriteOnly
     Property Category1Selected As Integer
     Property Category2Selected As Integer
+    Property Category2PrevValue As Integer
 
     Private _categoryList As IList(Of Category)
 
@@ -35,10 +41,18 @@ Public Class VMChainedComboBox
         _categoryList = CategoryList()
         Category1 = New BindingList(Of Category)(_categoryList.Where(Function(t) t.Level = 1).ToList())
         _category2 = New BindingList(Of Category)(_categoryList.Where(Function(t) t.Level = 2).ToList())
-        _productList = New BindingList(Of Product)(Product.CreateProductList())
-        Category1Selected = 0
-        Category2Selected = 0
+        _rawProductList = Product.CreateProductList()
+        _productList = New BindingList(Of Product)
+
+        If 0 < Category1.Count Then Category1Selected = Category1.Item(0).Id
+        If 0 < Category2.Count Then
+            Category2Selected = Category2.Item(0).Id
+            Category2PrevValue = -1 '初期表示時にSearchResultを表示するため
+        End If
     End Sub
 
+    Public Function IsCategory2Changed() As Boolean
+        Return Category2PrevValue <> Category2Selected
+    End Function
 
 End Class

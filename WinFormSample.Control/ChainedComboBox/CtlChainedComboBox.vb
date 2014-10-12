@@ -17,4 +17,13 @@
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
         SearchResultBindingSource.DataSource = _viewModel.ProductList
     End Sub
+
+    Private Sub ComboBox2_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedValueChanged
+        'SelectedIndexChangedと違って頻発する
+        If _viewModel Is Nothing Then Return
+        If _viewModel.IsCategory2Changed() = False Then Return
+
+        SearchResultBindingSource.DataSource = _viewModel.ProductList
+    End Sub
+
 End Class
