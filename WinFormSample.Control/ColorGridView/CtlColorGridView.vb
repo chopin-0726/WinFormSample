@@ -13,6 +13,7 @@ Public Class CtlColorGridView
         'TODO: BindingSourceがなくてもいけるのでは？
         BindingSourceProduct.DataSource = _viewModel.Editing
         _colorGridView = New CellColorFormatter(Of ProductWithColor)(DataGridView1)
+        BindingSourceCategory.DataSource = _viewModel.Category1
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click

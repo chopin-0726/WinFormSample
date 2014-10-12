@@ -76,8 +76,6 @@
         Return CategoryList.Where(Function(t) t.Id = id).Min()
     End Function
 
-
-
     Public Class Category
         Property Id As Integer
         Property Name As String
@@ -107,14 +105,20 @@
                 And Me.Name.Equals(target.Name)
         End Function
 
+        'TODO : ToString()がDataGridViewのテキスト表示に使われている件
+        Public Overrides Function ToString() As String
+            Return Name
+        End Function
+
     End Class
 
+    ' TODO: ↓ごみ
     Public Enum Category1Enum
         Book
         Stationary
         Other
     End Enum
-    Public Enum Category2Enum ' TODO: ほんとはカテゴリ１毎に分かれてるとよいのだけど
+    Public Enum Category2Enum
         Comic
         Novel
         Note

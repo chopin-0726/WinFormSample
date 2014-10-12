@@ -28,13 +28,16 @@ Partial Class CtlColorGridView
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.AddButton = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.BindingSourceCategory = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingSourceProduct = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IsSubmitTargetDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category1IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSourceCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSourceProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -80,7 +83,7 @@ Partial Class CtlColorGridView
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.Category1DataGridViewTextBoxColumn, Me.Category2DataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IsSubmitTargetDataGridViewCheckBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.Category1DataGridViewTextBoxColumn, Me.Category1IdDataGridViewTextBoxColumn, Me.StatusDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.BindingSourceProduct
         Me.DataGridView1.Location = New System.Drawing.Point(3, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -90,9 +93,19 @@ Partial Class CtlColorGridView
         Me.DataGridView1.Size = New System.Drawing.Size(505, 224)
         Me.DataGridView1.TabIndex = 10
         '
+        'BindingSourceCategory
+        '
+        Me.BindingSourceCategory.DataSource = GetType(WinFormSample.Control.Product.Category)
+        '
         'BindingSourceProduct
         '
         Me.BindingSourceProduct.DataSource = GetType(WinFormSample.Control.ProductWithColor)
+        '
+        'IsSubmitTargetDataGridViewCheckBoxColumn
+        '
+        Me.IsSubmitTargetDataGridViewCheckBoxColumn.DataPropertyName = "IsSubmitTarget"
+        Me.IsSubmitTargetDataGridViewCheckBoxColumn.HeaderText = "IsSubmitTarget"
+        Me.IsSubmitTargetDataGridViewCheckBoxColumn.Name = "IsSubmitTargetDataGridViewCheckBoxColumn"
         '
         'IdDataGridViewTextBoxColumn
         '
@@ -111,19 +124,25 @@ Partial Class CtlColorGridView
         Me.Category1DataGridViewTextBoxColumn.DataPropertyName = "Category1"
         Me.Category1DataGridViewTextBoxColumn.HeaderText = "Category1"
         Me.Category1DataGridViewTextBoxColumn.Name = "Category1DataGridViewTextBoxColumn"
+        Me.Category1DataGridViewTextBoxColumn.Visible = False
         '
-        'Category2DataGridViewTextBoxColumn
+        'Category1IdDataGridViewTextBoxColumn
         '
-        Me.Category2DataGridViewTextBoxColumn.DataPropertyName = "Category2"
-        Me.Category2DataGridViewTextBoxColumn.HeaderText = "Category2"
-        Me.Category2DataGridViewTextBoxColumn.Name = "Category2DataGridViewTextBoxColumn"
+        Me.Category1IdDataGridViewTextBoxColumn.DataPropertyName = "Category1Id"
+        Me.Category1IdDataGridViewTextBoxColumn.DataSource = Me.BindingSourceCategory
+        Me.Category1IdDataGridViewTextBoxColumn.DisplayMember = "Name"
+        Me.Category1IdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = True
+        Me.Category1IdDataGridViewTextBoxColumn.HeaderText = "Category1Id"
+        Me.Category1IdDataGridViewTextBoxColumn.Name = "Category1IdDataGridViewTextBoxColumn"
+        Me.Category1IdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Category1IdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Category1IdDataGridViewTextBoxColumn.ValueMember = "Id"
         '
         'StatusDataGridViewTextBoxColumn
         '
         Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
         Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
         Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
-        Me.StatusDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CtlColorGridView
         '
@@ -137,6 +156,7 @@ Partial Class CtlColorGridView
         Me.Name = "CtlColorGridView"
         Me.Size = New System.Drawing.Size(607, 380)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSourceCategory, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSourceProduct, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -147,10 +167,12 @@ Partial Class CtlColorGridView
     Friend WithEvents AddButton As System.Windows.Forms.Button
     Friend WithEvents BindingSourceProduct As System.Windows.Forms.BindingSource
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents BindingSourceCategory As System.Windows.Forms.BindingSource
+    Friend WithEvents IsSubmitTargetDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Category1DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Category2DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Category1IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents StatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports WinFormSample.Control.ColorStatus
 Imports System.ComponentModel
+Imports WinFormSample.Control.Product
 
 Public Class VmColorGridView
 
@@ -12,10 +13,18 @@ Public Class VmColorGridView
         End Get
     End Property
 
+    'TODO: ReadOnly
+    Private _categoryList As IList(Of Category)
+    Property Category1 As BindingList(Of Category)
+
 
     Public Sub New()
         _original = ProductWithColor.CreateProductList()
         InitilalizeEditingList()
+
+        _categoryList = CategoryList()
+        Category1 = New BindingList(Of Category)(_categoryList.Where(Function(t) t.Level = 1).ToList())
+
     End Sub
 
     Private Sub InitilalizeEditingList()

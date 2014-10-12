@@ -1,5 +1,11 @@
 ﻿Imports WinFormSample.Control.Product
 
+''' <summary>
+''' Product拡張 Product＋ColorStatus＋Checked
+''' （本当はProductがColorStatusを継承 ＋ 
+'''   画面用のエンティティはそれを継承 or 別のエンティティとして定義する　等にするべき）
+''' </summary>
+''' <remarks></remarks>
 Public Class ProductWithColor
     Inherits ColorStatus
 
@@ -7,10 +13,18 @@ Public Class ProductWithColor
     Property Name As String
     Property Category1 As Category
     Property Category2 As Category
+    Property Category1Id As Integer
+    Property Category2Id As Integer
+
+    Property IsSubmitTarget As Boolean
 
     Public Sub New()
         Category1 = GetCategory(9)
         Category2 = GetCategory(99)
+        Status = EditStatus.Created
+        IsSubmitTarget = False
+        Category1Id = Category1.Id
+        Category2Id = Category2.Id
     End Sub
 
     Public Sub New(_id As Integer, _name As String, _c1 As Category, _c2 As Category)
@@ -18,11 +32,26 @@ Public Class ProductWithColor
         Name = _name
         Category1 = _c1
         Category2 = _c2
+        Status = EditStatus.None
+        IsSubmitTarget = False
+        Category1Id = Category1.Id
+        Category2Id = Category2.Id
     End Sub
 
     Public Function Clone() As ProductWithColor
         Return New ProductWithColor(Me.Id, Me.Name, Me.Category1, Me.Category2)
     End Function
+
+    Public Sub Copy(ByRef dest As ProductWithColor)
+        dest.Id = Me.Id
+        dest.Name = Me.Name
+        dest.Category1 = Me.Category1.Clone()
+        dest.Category2 = Me.Category2.Clone()
+        dest.Status = EditStatus.None
+        dest.IsSubmitTarget = False
+        Category1Id = Category1.Id
+        Category2Id = Category2.Id
+    End Sub
 
     Public Overrides Function Equals(ByVal obj As Object) As Boolean
         'objがNothingか、型が違うときは、等価でない
