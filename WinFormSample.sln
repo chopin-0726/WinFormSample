@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ColorGridView", "ColorGridView\ColorGridView.vbproj", "{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SelectAndSelectedList", "SelectAndSelectedList\SelectAndSelectedList.vbproj", "{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinFormSample", "WinFormSampleBase\WinFormSample.vbproj", "{05849E89-9B42-435D-9624-760C74760724}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WinFormSample.Control", "WinFormSample.Control\WinFormSample.Control.vbproj", "{CA93D022-ECAD-4FEC-A1AD-84B8B9B3639D}"
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE3E1F47-9E21-47AE-AFB2-2EA9FF6246DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4B38503-DD97-4BF5-8A33-94DD10A3C79D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05849E89-9B42-435D-9624-760C74760724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05849E89-9B42-435D-9624-760C74760724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05849E89-9B42-435D-9624-760C74760724}.Release|Any CPU.ActiveCfg = Release|Any CPU
