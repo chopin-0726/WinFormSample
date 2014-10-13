@@ -28,14 +28,15 @@ Partial Class CtlColorGridView
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.AddButton = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.BindingSourceCategory = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingSourceProduct = New System.Windows.Forms.BindingSource(Me.components)
         Me.IsSubmitTargetDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Category1IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.BindingSourceCategory = New System.Windows.Forms.BindingSource(Me.components)
         Me.StatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BindingSourceProduct = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SortButton = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSourceCategory, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSourceProduct, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,14 +94,6 @@ Partial Class CtlColorGridView
         Me.DataGridView1.Size = New System.Drawing.Size(505, 224)
         Me.DataGridView1.TabIndex = 10
         '
-        'BindingSourceCategory
-        '
-        Me.BindingSourceCategory.DataSource = GetType(WinFormSample.Control.Product.Category)
-        '
-        'BindingSourceProduct
-        '
-        Me.BindingSourceProduct.DataSource = GetType(WinFormSample.Control.ProductWithColor)
-        '
         'IsSubmitTargetDataGridViewCheckBoxColumn
         '
         Me.IsSubmitTargetDataGridViewCheckBoxColumn.DataPropertyName = "IsSubmitTarget"
@@ -138,16 +131,34 @@ Partial Class CtlColorGridView
         Me.Category1IdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Category1IdDataGridViewTextBoxColumn.ValueMember = "Id"
         '
+        'BindingSourceCategory
+        '
+        Me.BindingSourceCategory.DataSource = GetType(WinFormSample.Control.Product.Category)
+        '
         'StatusDataGridViewTextBoxColumn
         '
         Me.StatusDataGridViewTextBoxColumn.DataPropertyName = "Status"
         Me.StatusDataGridViewTextBoxColumn.HeaderText = "Status"
         Me.StatusDataGridViewTextBoxColumn.Name = "StatusDataGridViewTextBoxColumn"
         '
+        'BindingSourceProduct
+        '
+        Me.BindingSourceProduct.DataSource = GetType(WinFormSample.Control.ProductWithColor)
+        '
+        'SortButton
+        '
+        Me.SortButton.Location = New System.Drawing.Point(333, 230)
+        Me.SortButton.Name = "SortButton"
+        Me.SortButton.Size = New System.Drawing.Size(175, 23)
+        Me.SortButton.TabIndex = 15
+        Me.SortButton.Text = "reverse(for sort test)"
+        Me.SortButton.UseVisualStyleBackColor = True
+        '
         'CtlColorGridView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.SortButton)
         Me.Controls.Add(Me.CheckButton)
         Me.Controls.Add(Me.ResetButton)
         Me.Controls.Add(Me.DeleteButton)
@@ -174,5 +185,6 @@ Partial Class CtlColorGridView
     Friend WithEvents Category1DataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Category1IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents StatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SortButton As System.Windows.Forms.Button
 
 End Class

@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports System.Drawing
 Imports WinFormSample.Control.ColorStatus
+Imports System.ComponentModel
 
 Public Class CtlColorGridView
 
@@ -12,7 +13,8 @@ Public Class CtlColorGridView
         _viewModel = New VmColorGridView()
         'TODO: BindingSourceがなくてもいけるのでは？
         BindingSourceProduct.DataSource = _viewModel.Editing
-        _colorGridView = New CellColorFormatter(Of ProductWithColor)(DataGridView1)
+        _colorGridView = New CellColorFormatter(Of ProductWithColor)( _
+            DataGridView1, _viewModel.Original, _viewModel.Editing.ToList())
         BindingSourceCategory.DataSource = _viewModel.Category1
     End Sub
 
@@ -21,6 +23,9 @@ Public Class CtlColorGridView
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+        'フォーカスをはずさないと列をVisible=Falseにできない
+        'フォーカスを外した時点でCellFormattingが発生する　→フォーカスを外すのが先
+        DataGridView1.CurrentCell = Nothing
         _viewModel.Delete(BindingSourceProduct.Position)
     End Sub
 
@@ -33,4 +38,7 @@ Public Class CtlColorGridView
 
     End Sub
 
+    Private Sub SortButton_Click(sender As Object, e As EventArgs) Handles SortButton.Click
+        _viewModel.Reverse()
+    End Sub
 End Class

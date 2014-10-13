@@ -6,6 +6,12 @@ Imports WinFormSample.Control.Product
 Public Class VmColorGridView
 
     Private _original As IList(Of ProductWithColor)
+    Public ReadOnly Property Original As IList(Of ProductWithColor)
+        Get
+            Return _original
+        End Get
+    End Property
+
     Private _editing As BindingList(Of ProductWithColor)
     Public ReadOnly Property Editing As BindingList(Of ProductWithColor)
         Get
@@ -46,6 +52,16 @@ Public Class VmColorGridView
         Else
             target.Status = EditStatus.Deleted
         End If
+    End Sub
+
+    Public Sub Reverse()
+        Dim tmp As ProductWithColor = _editing.Item(0).Clone()
+        Dim reverse As IList(Of ProductWithColor) = _editing.Reverse().ToList()
+        _editing.Clear()
+        For Each e As ProductWithColor In reverse
+            _editing.Add(e)
+        Next
+
     End Sub
 
 
