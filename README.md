@@ -3,22 +3,22 @@ WinFormSample
 
 Windows Form Sample
 
-以下、とりあえずメモ書きそのまま↓
+以下、とりあえずメモ書きそのまま↓  
   
   
+・環境：VS2013 Express for Windows Desctop  
 ・C#ではなくVB.netなのは大人の事情    
 ・Window Formなのも大人の事情  
 
 つかいかた  
 ・WinFormSmple　から起動  
-　コンボボックスからコントロール名を選ぶと、WinFormSample.Control 内の該当のコントロールを表示（する予定）  
+　コンボボックスからコントロール名を選ぶと、WinFormSample.Control 内の該当コントロールを表示  
 
   
 各Contorolについて  
 ・全般  
 　コントロール毎にディレクトリを分離（一部共通パーツはCommonディレクトリ内）  
 　Ctl（Control）、VM（ViewModel）は１：１　Ctlのバインド対象の型も基本的にVM内に定義  
-　※コントロールに名前空間つけられないような・・・？  
 　ほんとは名前空間とかつけるべきだけど全くつけてない  
   
 ・ColorGridView  
