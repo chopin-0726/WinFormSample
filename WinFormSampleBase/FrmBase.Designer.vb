@@ -25,8 +25,8 @@ Partial Class FrmBase
         Me.components = New System.ComponentModel.Container()
         Me.MainPanel = New System.Windows.Forms.Panel()
         Me.ComboBoxControlName = New System.Windows.Forms.ComboBox()
-        Me.BindingSourceControlName = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.BindingSourceControlName, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CtlSelectBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        CType(Me.CtlSelectBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MainPanel
@@ -38,11 +38,17 @@ Partial Class FrmBase
         '
         'ComboBoxControlName
         '
+        Me.ComboBoxControlName.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CtlSelectBindingSource, "SelectedCtl", True))
+        Me.ComboBoxControlName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxControlName.FormattingEnabled = True
         Me.ComboBoxControlName.Location = New System.Drawing.Point(12, 12)
         Me.ComboBoxControlName.Name = "ComboBoxControlName"
         Me.ComboBoxControlName.Size = New System.Drawing.Size(237, 20)
         Me.ComboBoxControlName.TabIndex = 1
+        '
+        'CtlSelectBindingSource
+        '
+        Me.CtlSelectBindingSource.DataSource = GetType(WinFormSample.VMFrmBase)
         '
         'FrmBase
         '
@@ -53,12 +59,12 @@ Partial Class FrmBase
         Me.Controls.Add(Me.MainPanel)
         Me.Name = "FrmBase"
         Me.Text = "Form1"
-        CType(Me.BindingSourceControlName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CtlSelectBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents MainPanel As System.Windows.Forms.Panel
     Friend WithEvents ComboBoxControlName As System.Windows.Forms.ComboBox
-    Friend WithEvents BindingSourceControlName As System.Windows.Forms.BindingSource
+    Friend WithEvents CtlSelectBindingSource As System.Windows.Forms.BindingSource
 
 End Class

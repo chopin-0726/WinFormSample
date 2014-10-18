@@ -77,24 +77,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CtlDefault2.Designer.vb">
-      <DependentUpon>CtlDefault2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CtlDefault2.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="FrmBase.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmBase.Designer.vb">
       <DependentUpon>FrmBase.vb</DependentUpon>
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CtlDefault.Designer.vb">
-      <DependentUpon>CtlDefault.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CtlDefault.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -111,14 +99,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="VMFrmBase.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CtlDefault.resx">
-      <DependentUpon>CtlDefault.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CtlDefault2.resx">
-      <DependentUpon>CtlDefault2.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmBase.resx">
       <DependentUpon>FrmBase.vb</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +120,7 @@
     <None Include="My Project\DataSources\CtlDefault.datasource" />
     <None Include="My Project\DataSources\CtlDefault2.datasource" />
     <None Include="My Project\DataSources\FrmBase.datasource" />
+    <None Include="My Project\DataSources\VMFrmBase.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

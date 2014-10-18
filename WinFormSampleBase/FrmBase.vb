@@ -2,36 +2,24 @@
 
 Public Class FrmBase
 
-    Property CtlNameDic As IList(Of String) =
-        New List(Of String)({"CtlDefault", "CtlDefault2"})
-    Private SelectedCtl As String
-    Private _currentCtl As Windows.Forms.Control
+
+    'Property CtlNameList As IList(Of String) = New List(Of String)({"ChainedComboBox", "ColorGridView", "MultiSelectList"})
+
+    'Private SelectedCtl As String
+    'Private _currentCtl As Windows.Forms.Control
+
+    Private _viewModel As VMFrmBase
 
     Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO:コントロールの切り替え
+        _viewModel = New VMFrmBase(Me.MainPanel)
 
-        '_currentCtl = New CtlDefault
-        _currentCtl = New CtlColorGridView
-        MainPanel.Controls.Add(_currentCtl)
-        MainPanel.Show()
+        ' コンボボックスにバインドしてない（けど普段Stringとバインドとかしないし）
+        ComboBoxControlName.Items.AddRange(_viewModel.CtlNameList.ToArray())
+        ComboBoxControlName.SelectedItem = _viewModel.CtlNameList.Item(0)
     End Sub
 
     Private Sub ComboBoxControlName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxControlName.SelectedIndexChanged
-        Dim prevCtl As Windows.Forms.Control
-        If SelectedCtl.Equals("CtlDefault") Then
-            prevCtl = _currentCtl
-            _currentCtl = New CtlDefault
-            MainPanel.Controls.Add(_currentCtl)
-            MainPanel.Controls.Remove(prevCtl)
-            MainPanel.Show()
-            prevCtl.Dispose()
-        ElseIf SelectedCtl.Equals("CtlDefault2") Then
-            prevCtl = _currentCtl
-            _currentCtl = New CtlDefault2
-            MainPanel.Controls.Add(_currentCtl)
-            MainPanel.Controls.Remove(prevCtl)
-            MainPanel.Show()
-            prevCtl.Dispose()
-        End If
+        _viewModel.SelectedCtl = CType(sender, ComboBox).SelectedItem.ToString()
+        _viewModel.SelectedIndexChanged()
     End Sub
 End Class
