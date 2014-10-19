@@ -70,7 +70,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
     End Sub
 
     ''' <summary>
-    ''' セル編集時、行ステータスを変更
+    ''' カレントセル移動時、値変更ありイベント　行ステータスを変更
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="rowevent"></param>
@@ -87,12 +87,13 @@ Public Class CellColorFormatter(Of T As ColorStatus)
             TryCast(_dataGridView.Rows.Item(e.RowIndex).DataBoundItem, ColorStatus).Status = EditStatus.Updated
         ElseIf status = EditStatus.Updated Then
             Dim dgv As DataGridView = CType(sender, DataGridView)
-            ApplyNotUpdatedColor(dgv, e.RowIndex)
+            '値変更契機でのみ色の解除をする　CellFormattingだとセルが点滅状態になるのでNG
+            ApplyCanceledColor(dgv, e.RowIndex)
         End If
     End Sub
 
     ''' <summary>
-    ''' 行表示時、行のステータスで行の色を変更
+    ''' セル描画時イベント　行ステータス・セル状態で行・セル色を変更
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="rowevent"></param>
@@ -101,7 +102,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
         Dim dgv As DataGridView = CType(sender, DataGridView)
         Dim e As DataGridViewCellFormattingEventArgs = CType(rowevent, DataGridViewCellFormattingEventArgs)
 
-        '列の編集状態により色変更
+        '行の編集状態により色変更
         Dim item As ColorStatus = TryCast(dgv.Rows(e.RowIndex).DataBoundItem, ColorStatus)
         Dim row As DataGridViewRow = _dataGridView.Rows(e.RowIndex)
 
@@ -157,7 +158,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
     ''' <param name="RowIndex"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Private Function ApplyNotUpdatedColor(ByVal dgv As DataGridView, RowIndex As Integer) As Boolean
+    Private Function ApplyCanceledColor(ByVal dgv As DataGridView, RowIndex As Integer) As Boolean
         Dim item As T = TryCast(dgv.Rows(RowIndex).DataBoundItem, T)
         Dim row As DataGridViewRow = _dataGridView.Rows(RowIndex)
 
