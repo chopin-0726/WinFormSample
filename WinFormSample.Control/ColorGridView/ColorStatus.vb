@@ -52,6 +52,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
         _dataGridView = target
         AddHandler _dataGridView.CellValueChanged, AddressOf CellValueChanged
         AddHandler _dataGridView.CellFormatting, AddressOf CellFormatting
+        AddHandler _dataGridView.CellValueChanged, AddressOf CellValueChanged
 
         _original = original
         _editing = editing
@@ -81,9 +82,12 @@ Public Class CellColorFormatter(Of T As ColorStatus)
         '編集状態変更
         Dim e As DataGridViewCellEventArgs = CType(rowevent, DataGridViewCellEventArgs)
         Dim status As EditStatus = TryCast(_dataGridView.Rows.Item(e.RowIndex).DataBoundItem, ColorStatus).Status
-        If status = EditStatus.None OrElse status = EditStatus.Updated Then
+        If status = EditStatus.None Then
             status = EditStatus.Updated
             TryCast(_dataGridView.Rows.Item(e.RowIndex).DataBoundItem, ColorStatus).Status = EditStatus.Updated
+        ElseIf status = EditStatus.Updated Then
+            Dim dgv As DataGridView = CType(sender, DataGridView)
+            ApplyNotUpdatedColor(dgv, e.RowIndex)
         End If
     End Sub
 
@@ -108,7 +112,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
         ElseIf item.Status = EditStatus.None Then
             row.DefaultCellStyle.BackColor = Nothing
         ElseIf item.Status = EditStatus.Updated Then
-            ApplyUpdateColor(dgv, e.RowIndex)
+            ApplyUpdatedColor(dgv, e.RowIndex)
         End If
     End Sub
 
@@ -117,7 +121,7 @@ Public Class CellColorFormatter(Of T As ColorStatus)
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Private Function ApplyUpdateColor(ByVal dgv As DataGridView, RowIndex As Integer) As Boolean
+    Private Function ApplyUpdatedColor(ByVal dgv As DataGridView, RowIndex As Integer) As Boolean
         Dim item As T = TryCast(dgv.Rows(RowIndex).DataBoundItem, T)
         Dim row As DataGridViewRow = _dataGridView.Rows(RowIndex)
 
@@ -136,6 +140,43 @@ Public Class CellColorFormatter(Of T As ColorStatus)
                 Dim changed As Boolean = originalValue.Equals(editedValue) = False
                 If changed And row.Cells(column.Index).Style.BackColor = Nothing Then
                     row.Cells(column.Index).Style.BackColor = Color.PaleGreen
+                End If
+            Catch e As Exception
+                Debug.Print(e.ToString)
+                Return False
+            End Try
+        Loop
+        Return False
+    End Function
+
+
+    ''' <summary>
+    ''' オリジナルと比較し、値が同じ場合はセルの色変更を解除
+    ''' </summary>
+    ''' <param name="dgv"></param>
+    ''' <param name="RowIndex"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function ApplyNotUpdatedColor(ByVal dgv As DataGridView, RowIndex As Integer) As Boolean
+        Dim item As T = TryCast(dgv.Rows(RowIndex).DataBoundItem, T)
+        Dim row As DataGridViewRow = _dataGridView.Rows(RowIndex)
+
+        Dim originalRow As T = _original.Where(Function(t) t.RowId = item.RowId).ToList().Item(0)
+
+        Dim currentCellIndex As Integer = row.Cells.Count - 1
+        Do While currentCellIndex >= 0
+
+            Try
+                Dim column As DataGridViewColumn = row.Cells(currentCellIndex).OwningColumn
+                currentCellIndex -= 1
+                If column.Visible = False Then Continue Do
+
+                Dim originalValue As Object = originalRow.GetType.GetProperty(column.DataPropertyName).GetValue(originalRow)
+                Dim editedValue As Object = item.GetType.GetProperty(column.DataPropertyName).GetValue(item)
+                Dim changed As Boolean = originalValue.Equals(editedValue) = False
+                'ApplyUpdatedColorとの差分はここだけ↓
+                If changed = False And row.Cells(column.Index).Style.BackColor <> Nothing Then
+                    row.Cells(column.Index).Style.BackColor = Nothing
                 End If
             Catch e As Exception
                 Debug.Print(e.ToString)
